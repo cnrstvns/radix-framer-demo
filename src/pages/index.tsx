@@ -1,9 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import { cn } from "@/lib";
+import ContextMenu from "@/components/context-menu";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -26,7 +28,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
+              By{" "}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -58,6 +60,28 @@ export default function Home() {
             />
           </div>
         </div>
+
+        <ContextMenu.Menu>
+          <ContextMenu.Trigger>
+            <div
+              className={cn(
+                "group relative cursor-default flex-col border-b h-32 min-w-96 border-neutral-800 pb-4 pr-4 bg-neutral-875"
+              )}
+            >
+              <div className="flex flex-row">
+                <div className="flex w-full justify-between pt-4">
+                  Something goes here... click me?
+                </div>
+              </div>
+            </div>
+          </ContextMenu.Trigger>
+
+          <ContextMenu.Content>
+            <ContextMenu.Title>Welcome</ContextMenu.Title>
+            <ContextMenu.Divider />
+            <ContextMenu.Button text="Do something" caption="Yea ok" />
+          </ContextMenu.Content>
+        </ContextMenu.Menu>
 
         <div className={styles.grid}>
           <a
@@ -119,5 +143,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  )
+  );
 }
